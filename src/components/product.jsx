@@ -1,12 +1,13 @@
 import "./product.css";
 import QuantityPicker from "./quantityPicker";
 import {useEffect, useState} from "react";
-
+import globalContext from '../state/globalContext';
 
 
 function Product(props) {
-
     const [quantity,setQuantity] = useState(1);
+    const addToCart = useContext(globalContext).addToCart;
+
 
     useEffect(function () {
         console.log("hey I'm a product");
@@ -24,12 +25,26 @@ function Product(props) {
     function getTotal(){
         let total = props.data.price + quantity;
         return total.toFixed(2);
-}
+    }
+
+    function handleAddClick(){
+        console.log ('Adding to cart');
+
+    let prodForCart = {...props.data};
+    prodForCart.Quantity = quantity;
+    console.log(prodForCart);
+    }
+
+    addToCart(prodForCart);
+
+    
+    
+
 
     return (
         <div className="product">
             
-            <img src={"/images/" + props.data.image} alt=""/>
+            <img src={'/images/' + props.data.image} alt=""/>
 
             <h5>{props.data.title}</h5>
 
@@ -40,8 +55,8 @@ function Product(props) {
 
         <div className="controls">
             <QuantityPicker onChange={onQuantityChange}></QuantityPicker>
-            <button type="button" className="btn btn-sm btn-info">
-            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+            <button onClick={handleAddClick} type="button" className="btn btn-sm btn-info">
+            <i className="fa fa-cart-arrow-down" aria-hidden="true"></i>
             </button>
             </div>
         </div>

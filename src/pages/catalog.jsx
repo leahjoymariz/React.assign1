@@ -61,7 +61,9 @@ function clearFilter(){
 
         <button onCLick= {clearFilter} className= "btn btn-dark btn-filter">All</button>
 
-        {category.map(c => <button onClick={()=>filter(c)} className= "btn btn-success btn-filter">{c}</button>)}
+        {category.map(c => 
+        <button
+            key={c} onCLick className= "btn btn-success btn-filter">{c}</button>)}
         <br></br>
         {prodsToDisplay.map((p) =>(
         <Product key={p._id} data= {p}></Product> ))}       

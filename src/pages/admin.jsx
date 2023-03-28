@@ -3,22 +3,37 @@ import { useState } from 'react';
 
 function Admin() {
     const [product, setProduct] = useState({});
+    const [coupon, setCoupon] = useState({});
 
 
     function handleTextChange(e){
         const value = e.target.value;
         const name = e.target.name;
 
-        product [name] = value;
+        
 
         let copy = {...product};
         copy [name] = value;
         setProduct(copy);
-        
+    
+
     }
 
-    function saveProduct(){
+    function handleCouponTextChange(e){
+        const value = e.target.value;
+        const name = e.target.name;
+
+        let copy = {...coupon};
+        copy[name] = value;
+        setCoupon(copy);
+    }
+
+    function saveProduct() {
         console.log(product);
+    }
+
+    function saveCoupon() {
+        console.log(coupon);
     }
 
     return <div className="admin">
@@ -57,6 +72,24 @@ function Admin() {
 
             <section id="coupons">
                 <h5>Coupon Codes</h5>
+
+                <form>
+                    <div className="mb-3">
+                        <label className="form-label">Code</label>
+                        <input name="code" onChange={handleCouponTextChange} type="text" className="form-control" />
+                    </div>
+
+                    <div className="mb-3">
+                        <label className="form-label">Discount</label>
+                        <input name="discount" onChange={handleCouponTextChange} type="text" className="form-control" />
+                    </div>
+
+                    <div className="mb-3">
+                        <button type="button" onClick={saveCoupon} className="btn btn-primary">Save Coupon</button>
+
+                    
+                    </div>
+                </form>
             </section>
         </main>
     </div>
