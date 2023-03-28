@@ -14,6 +14,7 @@ function Admin() {
         let copy = {...product};
         copy [name] = value;
         setProduct(copy);
+        
     }
 
     function saveProduct(){
