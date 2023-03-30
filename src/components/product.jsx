@@ -1,6 +1,6 @@
 import "./product.css";
 import QuantityPicker from "./quantityPicker";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import globalContext from '../state/globalContext';
 
 
@@ -31,12 +31,12 @@ function Product(props) {
         console.log ('Adding to cart');
 
     let prodForCart = {...props.data};
-    prodForCart.Quantity = quantity;
+    prodForCart.quantity = quantity;
     console.log(prodForCart);
-    }
+   
 
     addToCart(prodForCart);
-
+    }
     
     
 

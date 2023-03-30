@@ -20,11 +20,22 @@ function GlobalProvider(props) {
         console.log("global remove");
     }
 
+    function getNumberOfProducts() {
+        let total = 0;
+        for (let i=0; i < cart.length; i++) {
+          let prod = cart[i];
+          total = total + prod.quantity;
+        }
+
+        return total;
+    }
+
     return <GlobalContext.Provider value={{
         cart: cart,
         user: user,
         addToCart: addToCart,
         removeFromCart: removeFromCart,
+        getNumberOfProducts: getNumberOfProducts,
     }}>{props.children}</GlobalContext.Provider>;
     
 }

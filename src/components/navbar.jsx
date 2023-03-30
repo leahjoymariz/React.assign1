@@ -1,8 +1,12 @@
 import "./navbar.css";
 
 import {Link} from 'react-router-dom';
+import { useContext } from 'react';
+import globalContext from '../state/globalContext';
 
 function Navbar() {
+  const numOfProds = useContext(globalContext).getNumberOfProducts;
+
 return (
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -41,6 +45,7 @@ return (
           <form class="d-flex" role="search">
             
             <Link class="btn btn-outline-success" to="/cart">
+             <span className= "badge text-bg-light">{numOfProds()}{" "}</span>
             <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
               Cart
             </Link>

@@ -11,6 +11,7 @@ function QuantityPicker(props) {
     }
 
     function increase() {
+        if (quantity===1) return;
         let val = quantity + 1;
         setQuantity(val);
     }
